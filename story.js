@@ -1,5 +1,5 @@
 // [speaker, text, opts]  opts: bg, ch, choice:[[label,{aff},goto]], fade, fork, end
-const IMG={roof:"rooftop.jpg",kai:"kai.jpg",selene:"selene.jpg",kiss:"kiss.jpg"};
+const IMG={roof:"rooftop.jpg",kai:"kai.jpg",selene:"selene.jpg",kiss:"kiss.jpg",rio:"rio.jpg",vip:"vip.jpg",masq:"masq.jpg",tub:"tub.jpg",yacht:"yacht.jpg",pent:"pent.jpg",cgSm:"cg_selene_masq.jpg",cgSt:"cg_selene_tub.jpg",cgKm:"cg_kai_morning.jpg",cgRy:"cg_rio_yacht.jpg"};
 const SC={
 prologue:[
  ["","Midnight at the Halcyon Tower. Ninety floors above a city that never stops glowing.",{bg:"roof",ch:null}],
@@ -40,33 +40,113 @@ p5:[
  ["KAI VANCE","That's my father's signature. I swear I didn't know.",{ch:"kai"}],
  ["SELENE AURELIO","And that's my uncle's bank. So we're both guilty by blood.",{ch:"selene"}],
  ["","Who do you trust with it?",{ch:null,choice:[
-  ["Give it to Kai. Let him choose you over his father.",{kai:3},"fork"],
-  ["Give it to Selene. Let her burn her family's secrets.",{selene:3},"fork"],
-  ["Keep it. Leverage is leverage.",{},"fork"]]}]],
-fork:[["","Last call. One of them lingers by the railing, waiting to see who you'll walk toward.",{ch:null,fork:1}]],
+  ["Give it to Kai. Let him choose you over his father.",{kai:3},"a2"],
+  ["Give it to Selene. Let her burn her family's secrets.",{selene:3},"a2"],
+  ["Keep it. Leverage is leverage.",{},"a2"]]}]],
+a2:[
+ ["","ACT II · THE VIP LOUNGE. Two a.m. Neither heir has left. Someone unlocks the velvet door behind the bar.",{bg:"vip",ch:null}],
+ ["RIO NAVARRO","Relax, I have a key. Who do you think fills your top shelf with bottles that don't officially exist?",{ch:"rio"}],
+ ["","Rio Navarro: DJ, smuggler, and the only man both dynasties owe money to. His shirt has given up on buttons entirely."],
+ ["RIO NAVARRO","A Vance and an Aurelio, sharing oxygen. And you in the middle. Lucky you. Lucky me."],
+ ["KAI VANCE","Navarro. Of course it's you.",{ch:"kai"}],
+ ["SELENE AURELIO","Don't look so jealous, Kai. It wrinkles the suit.",{ch:"selene"}],
+ ["RIO NAVARRO","Masquerade at the Gilded Penthouse in an hour. Masks on, rules off. You're coming, bartender.",{ch:"rio",choice:[
+  ["\"Only if you're my date.\"",{rio:3},"a2b"],
+  ["Pull Kai closer by his tie. \"He's my date.\"",{kai:3},"a2b"],
+  ["Sip Selene's martini from her side of the glass.",{selene:3},"a2b"]]}]],
+a2b:[
+ ["","The air goes hot and tight. Three people watching you, all pretending not to watch each other.",{ch:null}],
+ ["RIO NAVARRO","Truth or dare, lounge rules. Loser buys the bottle. Winner picks a kiss.",{ch:"rio",choice:[
+  ["Dare Kai to unbutton that perfect shirt.",{kai:2,rio:1},"a2c"],
+  ["Dare Selene to sit in your lap for the next round.",{selene:2,rio:1},"a2c"],
+  ["Dare Rio to tell the truth for once.",{rio:2},"a2c"]]}]],
+a2c:[
+ ["","The dare lands. Laughter, a slow burn, eye contact that lasts far too long.",{ch:null}],
+ ["SELENE AURELIO","Careful, darling. Games like this are how empires fall.",{ch:"selene"}],
+ ["KAI VANCE","Then let them fall. I'm done playing fair.",{ch:"kai"}],
+ ["","Masks are handed out at the door. Gold, black, crimson. The night is only getting started.",{ch:null,go:"a3m"}]],
+a3m:[
+ ["","ACT III · THE MASQUERADE. Chandeliers, gold confetti, strangers in silk. Behind a mask, everyone is braver.",{bg:"masq",ch:null}],
+ ["","A woman in a gold lace mask leans on a pillar, one finger to her lips. You'd know that red hair anywhere.",{bg:"cgSm"}],
+ ["SELENE AURELIO","Shh. Tonight I'm nobody's heiress. Dance with me before someone remembers my name."],
+ ["","Kai watches from across the ballroom, jaw tight. On the balcony, Rio raises a glass toward the stairs.",{bg:"masq",choice:[
+  ["Dance with Selene, slow and much too close.",{selene:3},"a3s"],
+  ["Cross the room and take Kai's hand.",{kai:3},"a3k"],
+  ["Follow Rio up the stairs.",{rio:3},"a3r"]]}]],
+a3s:[
+ ["SELENE AURELIO","You lead like you've thought about this. A lot.",{ch:"selene"}],
+ ["","Her hand slides to the small of your back. The song ends. Neither of you lets go.",{ch:null}],
+ ["SELENE AURELIO","There's a hot tub on the roof. Bring the champagne.",{ch:"selene",go:"a4"}]],
+a3k:[
+ ["KAI VANCE","You danced with her. You laughed at his jokes. I've never been jealous in my life.",{ch:"kai"}],
+ ["","He pulls you behind a crimson curtain. His mask comes off first. Then his jacket.",{ch:null}],
+ ["KAI VANCE","Tell me I'm not imagining this.",{ch:"kai",go:"a4"}]],
+a3r:[
+ ["RIO NAVARRO","Penthouse parties are boring. My boat isn't. But first, the roof. Everyone's heading up.",{ch:"rio"}],
+ ["","He grins like a man who has never once been told no.",{ch:null,go:"a4"}]],
+a4:[
+ ["","ACT IV · THE ROOFTOP. Steam rises into neon rain. Candles along the hot tub, robes on the lounger, an open bottle.",{bg:"tub",ch:null}],
+ ["","Selene is already in the water, red hair dark with rain, champagne in hand.",{bg:"cgSt"}],
+ ["SELENE AURELIO","Took you long enough. Get in. The water's warm and I'm feeling generous."],
+ ["","Footsteps. Kai, sleeves rolled, tie gone. Rio, still masked, laughing as he kicks off his shoes.",{bg:"tub"}],
+ ["RIO NAVARRO","Private party, or can anyone confess their sins?",{ch:"rio"}],
+ ["","Four people. One hot tub. A lot of rain and very little self-control.",{ch:null,choice:[
+  ["Slide in beside Selene. Let her pour for you.",{selene:3},"a4b"],
+  ["Sit on the edge with Kai, his hand on your knee.",{kai:3},"a4b"],
+  ["Let Rio pull you in, clothes and all.",{rio:3},"a4b"],
+  ["\"Everyone in. No secrets tonight.\"",{kai:2,selene:2,rio:2},"a4b"]]}]],
+a4b:[
+ ["","Truths come out in the steam. Selene's family is broke. Kai's father has a second family. Rio has wanted this bar for years, and maybe its owner.",{ch:null}],
+ ["KAI VANCE","Whatever happens tonight, I don't want to be a Vance tomorrow.",{ch:"kai"}],
+ ["SELENE AURELIO","Then don't. Be someone's instead.",{ch:"selene"}],
+ ["RIO NAVARRO","The boat leaves at four. The penthouse bedroom is empty. This tub isn't going anywhere. Your call, boss.",{ch:"rio"}],
+ ["","Somebody's going to wake up with you. Maybe more than somebody.",{ch:null,choice:[
+  ["Take the penthouse key.",{kai:2},"a4c"],
+  ["Take Rio's hand and run for the docks.",{rio:2},"a4c"],
+  ["Stay in the water until sunrise.",{selene:2},"a4c"],
+  ["Keep everyone exactly where they are.",{kai:1,selene:1,rio:1},"a4c"]]}]],
+a4c:[["","Last call, for real this time.",{ch:null,fork:1}]],
 kai:[
- ["KAI VANCE","Everyone else left. Good.",{ch:"kai"}],
- ["KAI VANCE","Tomorrow I can be CEO, or I can be the man who skipped the vote to stand in the rain with you.",{choice:[
+ ["","THE PENTHOUSE. Satin sheets, discarded heels, his tie on the floor where you threw it.",{bg:"pent",ch:null}],
+ ["KAI VANCE","Tomorrow I can be CEO, or the man who skipped the vote to stay here with you.",{ch:"kai",choice:[
   ["\"Go win. I'll be here after.\"",{kai:1},"kai2"],
-  ["\"Stay. Just tonight, forget the empire.\"",{kai:2},"kai2"]]}]],
+  ["\"Stay. Forget the empire.\"",{kai:2},"kai2"]]}]],
 kai2:[
- ["","He steps close enough that you feel the heat of him through the cold rain.",{ch:null}],
+ ["","He crosses the room slowly, unbuttoning his cuffs one at a time, watching you the whole way.",{ch:null}],
  ["KAI VANCE","Tell me to stop and I will."],
  ["","You don't.",{bg:"kiss"}],
- ["","The city blurs into gold. His hand finds your cheek, and the war between two dynasties stops mattering at all."],
- ["","Inside, the door clicks shut behind you both...",{fade:1}],
- ["","Morning. Coffee for two. A text from the board: \"Where are you?\" He turns his phone face down and pulls you back in.",{bg:"roof",end:"kai"}]],
+ ["","His mouth on yours, the city blurred to gold. Your hands find his shirt buttons and stop being patient."],
+ ["","The lamp clicks off...",{fade:1}],
+ ["","Sunrise. He sits on the edge of the bed in last night's shirt, two coffees in hand, like the board meeting doesn't exist.",{bg:"cgKm"}],
+ ["KAI VANCE","Forty-one missed calls. I've never been happier.",{end:"kai"}]],
 selene:[
- ["SELENE AURELIO","He left. I knew he would. Vances never stay when it rains.",{ch:"selene"}],
- ["SELENE AURELIO","My family wants me to take this bar from you. I'd rather take you to dinner. Then breakfast.",{choice:[
-  ["\"Skip dinner.\"",{selene:2},"sel2"],
-  ["\"Dinner first. Make me wait.\"",{selene:1},"sel2"]]}]],
+ ["","Dawn turns the steam pink. The others are gone. Selene drifts closer, her glass abandoned on the tile.",{bg:"cgSt",ch:null}],
+ ["SELENE AURELIO","Secrets for secrets, darling. I never wanted the empire. I wanted someone who didn't want it either.",{choice:[
+  ["\"Then stop talking.\"",{selene:2},"sel2"],
+  ["\"Tell me another secret first.\"",{selene:1},"sel2"]]}]],
 sel2:[
- ["","She sets the martini down and closes the distance in two slow steps, heels clicking on the wet tile."],
- ["SELENE AURELIO","Secrets for secrets, darling. Mine: I never wanted the empire. I wanted someone who didn't want it either."],
- ["","Her lips taste like gin and lightning. The skyline flickers like it's holding its breath."],
- ["","She takes your hand and leads you past the velvet rope...",{fade:1}],
- ["","Sunrise over the Halcyon. Her red hair across your pillow, her family's lawyers calling unanswered. Some deals are worth breaking.",{ch:null,bg:"roof",end:"selene"}]],
-solo:[["","You lock up alone. Both heirs watch you go: intrigued, unsatisfied, and absolutely coming back tomorrow.",{ch:null,end:"solo"}]]
+ ["","Her lips taste like gin and lightning. Wet hands slide up your back, slow and deliberate.",{bg:"kiss"}],
+ ["SELENE AURELIO","Inside. Now. Before I forget I'm a lady."],
+ ["","Robes left on the lounger, wet footprints to the penthouse door...",{fade:1}],
+ ["","Noon. Her red hair across your pillow, her family's lawyers calling unanswered. Some deals are worth breaking.",{bg:"pent",end:"selene"}]],
+rio:[
+ ["","THE YACHT. Moonlight on black water, the city glittering across the bay.",{bg:"yacht",ch:null}],
+ ["","Rio climbs aboard from a midnight swim, dripping, towel on one shoulder, grinning like he stole the moon.",{bg:"cgRy"}],
+ ["RIO NAVARRO","Everyone in this city wants something from you. I just want the next six hours.",{choice:[
+  ["\"Make them count.\"",{rio:2},"rio2"],
+  ["Pull him down onto the lounger by his chain.",{rio:3},"rio2"]]}]],
+rio2:[
+ ["","He tastes like salt and rum. His laugh against your neck turns into something lower.",{bg:"yacht",ch:null}],
+ ["RIO NAVARRO","Captain's cabin is downstairs. Better view from the bed.",{ch:"rio"}],
+ ["","The cabin door swings shut with the tide...",{ch:null,fade:1}],
+ ["","Dawn at sea. No signal, no dynasties. Just him in a towel, humming off-key, making terrible coffee.",{end:"rio"}]],
+trio:[
+ ["","Nobody leaves. Not Kai, not Selene, not Rio. Four people in the steam, the city falling asleep below.",{bg:"tub",ch:null}],
+ ["SELENE AURELIO","We could fight over you. Or we could stop pretending we want to.",{ch:"selene"}],
+ ["KAI VANCE","For once, I don't want to win. I just want in.",{ch:"kai"}],
+ ["RIO NAVARRO","Penthouse has a very large bed. I checked.",{ch:"rio"}],
+ ["","Three hands reach for yours at once...",{ch:null,fade:1}],
+ ["","Morning. A tangle of satin sheets, three heartbeats, two dynasties in ruins and one bar that answers to no one.",{bg:"pent",end:"trio"}]],
+solo:[["","You lock up alone. All three watch you go: intrigued, unsatisfied, and absolutely coming back tomorrow.",{bg:"roof",ch:null,end:"solo"}]]
 };
-const ENDS={kai:["THE HEIR WHO STAYED","Kai Vance ending"],selene:["SECRETS FOR SECRETS","Selene Aurelio ending"],solo:["LAST CALL","Solo ending: raise one heir's heart higher to unlock their route."]};
+const ENDS={kai:["THE HEIR WHO STAYED","Kai Vance ending"],selene:["SECRETS FOR SECRETS","Selene Aurelio ending"],rio:["LOST AT SEA","Rio Navarro ending"],trio:["KINGDOM OF THREE","Secret ending: win over all three."],solo:["LAST CALL","Solo ending: raise someone's heart higher to unlock their route."]};
